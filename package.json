@@ -8,9 +8,11 @@
     "**/*.ts"
   ],
   "scripts": {
+    "check:prettier": "npx prettier -c .",
+    "check:lint": "npx eslint *.ts",
     "check:typescript": "npx tsc",
     "check:package": "npm pack --dry-run",
-    "check": "run-s check:typescript check:package"
+    "check": "run-s check:prettier check:lint check:typescript check:package"
   },
   "repository": {
     "type": "git",
@@ -28,7 +30,13 @@
   },
   "homepage": "https://github.com/erkobridee/ts-definitions-common#readme",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.15.2",
+    "@typescript-eslint/parser": "^4.15.2",
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^8.0.0",
     "npm-run-all": "^4.1.5",
+    "prettier": "^2.2.1",
+    "prettier-eslint": "^12.0.0",
     "typescript": "^4.1.5"
   }
 }
