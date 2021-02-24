@@ -61,10 +61,48 @@
 				<a href="#typescript-common-definitions" id="typescript-common-definitions" style="color: inherit; text-decoration: none;">
 					<h1>typescript common definitions</h1>
 				</a>
-				<blockquote>
-					<p>recurrent code useful for any <a href="https://www.typescriptlang.org/">TypeScript</a> project</p>
-				</blockquote>
+				<p>⚠️&nbsp;&nbsp;This library must be used as a dev dependency on a project that uses <a href="https://www.typescriptlang.org/">TypeScript</a></p>
+				<a href="#instalation" id="instalation" style="color: inherit; text-decoration: none;">
+					<h2>Instalation</h2>
+				</a>
 				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">install</span><span style="color: #000000"> --</span><span style="color: #001080">save</span><span style="color: #000000">-</span><span style="color: #001080">dev</span><span style="color: #000000"> @</span><span style="color: #001080">erkobridee</span><span style="color: #000000">/</span><span style="color: #001080">ts</span><span style="color: #000000">-</span><span style="color: #001080">definitions</span><span style="color: #000000">-</span><span style="color: #001080">common</span>
+</code></pre>
+				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
+					<h2>Documentation</h2>
+				</a>
+				<p><a href="http://erkobridee.github.io/ts-definitions-common/">@erkobridee/ts-definitions-common</a></p>
+				<a href="#examples" id="examples" style="color: inherit; text-decoration: none;">
+					<h2>Examples</h2>
+				</a>
+				<a href="#tfunction" id="tfunction" style="color: inherit; text-decoration: none;">
+					<h3>TFunction</h3>
+				</a>
+				<pre><code><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">TFunction</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@erkobridee/ts-definitions-common&#039;</span><span style="color: #000000">;</span>
+
+<span style="color: #008000">// or</span>
+
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">TFunction</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@erkobridee/ts-definitions-common/types/functions&#039;</span><span style="color: #000000">;</span>
+
+
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #795E26">myFunction</span><span style="color: #000000">: </span><span style="color: #267F99">TFunction</span><span style="color: #000000"> = () </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000">  </span><span style="color: #0000FF">undefined</span><span style="color: #000000">;</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">greetings</span><span style="color: #000000">: </span><span style="color: #267F99">TFunction</span><span style="color: #000000">&lt;[</span><span style="color: #267F99">string</span><span style="color: #000000">], </span><span style="color: #267F99">string</span><span style="color: #000000">&gt; </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #267F99">value</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #A31515">`greetings </span><span style="color: #0000FF">${</span><span style="color: #267F99">value</span><span style="color: #0000FF">}</span><span style="color: #A31515">!`</span><span style="color: #000000">;</span>
+</code></pre>
+				<a href="#tdomeventhandler" id="tdomeventhandler" style="color: inherit; text-decoration: none;">
+					<h3>TDOMEventHandler</h3>
+				</a>
+				<pre><code><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">TDOMEventHandler</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@erkobridee/ts-definitions-common&#039;</span><span style="color: #000000">;</span>
+
+<span style="color: #008000">// or</span>
+
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">TDOMEventHandler</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@erkobridee/ts-definitions-common/types/dom&#039;</span><span style="color: #000000">;</span>
+
+
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #795E26">clickHandler</span><span style="color: #000000">: </span><span style="color: #267F99">TDOMEventHandler</span><span style="color: #000000"> = (</span><span style="color: #001080">event</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">event</span><span style="color: #000000">);</span>
+
+<span style="color: #001080">window</span><span style="color: #000000">.</span><span style="color: #795E26">addEventListener</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;click&#039;</span><span style="color: #000000">, </span><span style="color: #001080">clickHandler</span><span style="color: #000000">);</span>
 </code></pre>
 			</div>
 		</div>
