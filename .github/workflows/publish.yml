@@ -1,0 +1,43 @@
+name: CD - publish docs and npm package
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: Install Node.js dependencies
+        run: npm ci
+
+      - name: Build docs
+        run: npm run docs
+
+      - name: Deploy docs
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist-docs
+
+      - name: Build npm package
+        run: npm run build
+
+      - name: Deploy npm package
+        run: |
+          cd dist-pack
+          echo -e "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
+          echo -e "registry=https://registry.npmjs.org/" >> .npmrc
+          echo -e "always-auth=true" >> .npmrc
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
