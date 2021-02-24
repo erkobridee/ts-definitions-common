@@ -8,8 +8,8 @@
     "**/*.ts"
   ],
   "scripts": {
-    "check:prettier": "npx prettier -c .",
-    "check:lint": "npx eslint *.ts",
+    "check:prettier": "npx prettier -c src",
+    "check:lint": "npx eslint src/**/*.ts",
     "check:typescript": "npx tsc",
     "check:package": "npm pack --dry-run",
     "check": "run-s check:prettier check:lint check:typescript check:package"
