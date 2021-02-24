@@ -12,7 +12,7 @@
     "check:lint": "npx eslint src/**/*.ts",
     "check:typescript": "npx tsc",
     "check:package": "npm pack --dry-run",
-    "check": "run-s check:prettier check:lint check:typescript check:package",
+    "check": "run-s check:prettier check:lint check:typescript",
     "predocs": "rm -rf dist-docs",
     "docs": "npx typedoc",
     "preservedocs": "run-s docs",
