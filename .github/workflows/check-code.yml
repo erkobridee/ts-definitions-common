@@ -3,7 +3,7 @@ name: CI - code check
 on:
   push:
     tags-ignore:
-      - *
+      - '*'
 
 jobs:
   check:
