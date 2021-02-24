@@ -1,5 +1,16 @@
-import { TFunction } from '../types/functions';
+/**
+ * get the type name of the JS Object
+ *
+ * @example
+ * ```TO_STRING(1); // [object Number]```
+ *
+ * @example
+ * ```TO_STRING(/x/); // [object RegExp]```
+ *
+ * @param {any} value
+ * @returns string - type of the Object
+ */
+export const TO_STRING = (value): string => ({}.toString.call(value));
 
-export const TO_STRING = {}.toString;
-
-export const NOOP: TFunction = () => undefined;
+/** useful to define a default callback that doesn't do nothing */
+export const NOOP = (): undefined => undefined;
