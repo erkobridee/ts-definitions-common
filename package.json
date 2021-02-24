@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "common typescript definitions lib",
   "main": "index.ts",
+  "types": "index.ts",
   "files": [
     "**/*.ts"
   ],
