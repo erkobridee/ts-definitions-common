@@ -10,7 +10,7 @@
  * @param {any} value
  * @returns string - type of the Object
  */
-export const TO_STRING = (value): string => ({}.toString.call(value));
+export const TO_STRING = (value: any): string => ({}.toString.call(value));
 
 /** useful to define a default callback that doesn't do nothing */
 export const NOOP = (): undefined => undefined;
