@@ -1,6 +1,6 @@
 {
   "name": "@erkobridee/ts-definitions-common",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "common typescript definitions lib",
   "scripts": {
     "clean:docs": "npx rimraf dist-docs",
