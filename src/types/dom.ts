@@ -1,5 +1,7 @@
 import { TFunction } from './functions';
 
+export type TWindow = typeof window;
+
 export type TDOMElement = HTMLElement | Document | Window;
 
 /**
