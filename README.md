@@ -1,3 +1,5 @@
+[![Actions Status](https://github.com/erkobridee/ts-definitions-common/workflows/CD%20-%20publish%20docs%20and%20npm%20package/badge.svg)](https://github.com/erkobridee/ts-definitions-common/)
+
 # typescript common definitions
 
 ⚠️&nbsp;&nbsp;This library must be used as a dev dependency on a project that uses [TypeScript](https://www.typescriptlang.org/)
