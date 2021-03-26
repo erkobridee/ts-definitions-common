@@ -1,11 +1,6 @@
 const path = require('path');
 const fse = require('fs-extra');
 
-const packFiles = {
-  main: 'index.ts',
-  types: 'index.ts',
-};
-
 const removeAttributes = (fromObject, attributes) => {
   if (!fromObject || !Array.isArray(attributes) || attributes.length <= 0) {
     return fromObject;
@@ -17,15 +12,23 @@ const removeAttributes = (fromObject, attributes) => {
 
 const packageNotAllowedAttributes = [
   'main',
+  'module',
+  'browser',
   'types',
   'files',
+  'buildConfig',
+  'packageFilesMap',
   'scripts',
   'devDependencies',
+  'lint-staged',
+  'husky',
 ];
 
 const rootPackageJsonPath = path.resolve('package.json');
 
 let pkg = require(rootPackageJsonPath);
+
+const packFiles = pkg.packageFilesMap;
 
 pkg = removeAttributes(pkg, packageNotAllowedAttributes);
 
