@@ -1,3 +1,5 @@
+export const m_interfaces_name = 'interfaces';
+
 /** anything that contains width and height */
 export interface ISize {
   width: number;
