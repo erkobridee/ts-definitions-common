@@ -88,19 +88,20 @@ let rollupConfig = [bundleConfig];
 
 if (Array.isArray(moduleEntries) && moduleEntries.length > 0) {
   // https://rollupjs.org/guide/en/#outputpreservemodulesroot
-  const modulesConfig = moduleEntries.map((entry) => ({
+  const modulesConfigObj = {
     input: moduleEntries,
     output: {
       format: 'es',
       dir: outputDir,
       preserveModules: true,
       preserveModulesRoot: 'src',
+      exports: 'named',
     },
     plugins: rollupCommonPlugins,
     external,
-  }));
+  };
 
-  rollupConfig = [...rollupConfig, ...modulesConfig];
+  rollupConfig = [...rollupConfig, modulesConfigObj];
 }
 
 export default rollupConfig;
