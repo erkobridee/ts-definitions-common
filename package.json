@@ -2,27 +2,42 @@
   "name": "@erkobridee/ts-definitions-common",
   "version": "0.6.3",
   "description": "common typescript definitions lib",
+  "buildConfig": {
+    "outputDir": "dist-pack",
+    "bundleDir": "dist",
+    "bundleEntry": "src/index.ts",
+    "moduleEntries": [
+      "src/constants/index.ts",
+      "src/enums/index.ts",
+      "src/interfaces/index.ts",
+      "src/types/index.ts"
+    ]
+  },
+  "packageFilesMap": {
+    "types": ".",
+    "main": "dist/cjs.js",
+    "module": "dist/esm.js"
+  },
   "scripts": {
+    "postinstall": "npx is-ci || npx husky install",
     "clean:docs": "npx rimraf dist-docs",
     "clean:pack": "npx rimraf dist-pack",
-    "clean": "run-p clean:docs clean:pack",
+    "clean": "npx run-p clean:docs clean:pack",
     "check:prettier": "npx prettier -c src",
     "check:lint": "npx eslint src/**/*.ts",
     "check:typescript": "npx tsc",
-    "check:package": "npm pack --dry-run",
-    "check": "run-s check:prettier check:lint check:typescript",
-    "predocs": "run-s clean:docs",
+    "check": "npx run-s check:prettier check:lint check:typescript",
+    "predocs": "npx run-s clean:docs",
     "docs": "npx typedoc",
-    "preservedocs": "run-s docs",
+    "preservedocs": "npx run-s docs",
     "servedocs": "npx serve dist-docs -l 3000",
-    "predeploydocs": "run-s docs",
+    "predeploydocs": "npx run-s docs",
     "deploydocs": "npx gh-pages -d dist-docs",
     "copy:readme": "npx cpy 'README.md' 'dist-pack'",
-    "copy:src": "npx cpy '**/*.ts' '../dist-pack' --cwd=src --parents",
-    "copy": "run-p copy:readme copy:src",
     "build:package-json": "node scripts/dist-pack.js",
-    "prebuild": "run-s clean:pack",
-    "build": "run-p build:package-json copy"
+    "prebuild": "npx run-s clean:pack",
+    "build": "npx rollup -c",
+    "postbuild": "npx run-p build:package-json copy:readme"
   },
   "repository": {
     "type": "git",
@@ -40,8 +55,18 @@
   },
   "homepage": "https://github.com/erkobridee/ts-definitions-common#readme",
   "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/plugin-transform-runtime": "^7.13.10",
+    "@babel/preset-env": "^7.13.12",
+    "@babel/preset-react": "^7.12.13",
+    "@babel/preset-typescript": "^7.13.0",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^17.1.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^11.2.0",
     "@typescript-eslint/eslint-plugin": "^4.15.2",
     "@typescript-eslint/parser": "^4.15.2",
+    "babel-loader": "^8.2.2",
     "cpy-cli": "^3.1.1",
     "eslint": "^7.20.0",
     "eslint-config-prettier": "^8.0.0",
@@ -51,6 +76,8 @@
     "prettier": "^2.2.1",
     "prettier-eslint": "^12.0.0",
     "rimraf": "^3.0.2",
+    "rollup": "^2.42.4",
+    "rollup-plugin-typescript2": "^0.30.0",
     "typedoc": "^0.20.28",
     "typescript": "^4.1.5"
   }
