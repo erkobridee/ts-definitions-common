@@ -19,7 +19,11 @@
     "module": "dist/esm.js"
   },
   "scripts": {
-    "postinstall": "npx is-ci || npx husky install",
+    "husky:uninstall": "npx rimraf .husky && git config --unset core.hooksPath",
+    "husky:install": "npx husky install",
+    "husky:config:pre-commit": "npx husky add .husky/pre-commit \"npx lint-staged\"",
+    "husky": "node scripts/husky-setup.js",
+    "prepare": "npx is-ci || npm run husky",
     "clean:docs": "npx rimraf dist-docs",
     "clean:pack": "npx rimraf dist-pack",
     "clean": "npx run-p clean:docs clean:pack",
@@ -39,6 +43,10 @@
     "build": "npx rollup -c",
     "postbuild": "npx run-p build:package-json copy:readme"
   },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,md,html,css,scss}": "prettier --write",
+    "src/**/*.{js,jsx,ts,tsx}": "eslint --fix"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/erkobridee/ts-definitions-common.git"
@@ -55,30 +63,32 @@
   },
   "homepage": "https://github.com/erkobridee/ts-definitions-common#readme",
   "devDependencies": {
-    "@babel/core": "^7.13.10",
-    "@babel/plugin-transform-runtime": "^7.13.10",
-    "@babel/preset-env": "^7.13.12",
-    "@babel/preset-react": "^7.12.13",
-    "@babel/preset-typescript": "^7.13.0",
+    "@babel/core": "^7.15.8",
+    "@babel/plugin-transform-runtime": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.15.0",
     "@rollup/plugin-babel": "^5.3.0",
-    "@rollup/plugin-commonjs": "^17.1.0",
+    "@rollup/plugin-commonjs": "^21.0.0",
     "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^11.2.0",
-    "@typescript-eslint/eslint-plugin": "^4.15.2",
-    "@typescript-eslint/parser": "^4.15.2",
-    "babel-loader": "^8.2.2",
+    "@rollup/plugin-node-resolve": "^13.0.5",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
     "cpy-cli": "^3.1.1",
-    "eslint": "^7.20.0",
-    "eslint-config-prettier": "^8.0.0",
-    "fs-extra": "^9.1.0",
-    "gh-pages": "^3.1.0",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.2.1",
-    "prettier-eslint": "^12.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "fs-extra": "^10.0.0",
+    "gh-pages": "^3.2.3",
+    "husky": "^7.0.2",
+    "is-ci": "^3.0.0",
+    "lint-staged": "^11.2.3",
+    "npm-run-all2": "^5.0.2",
+    "prettier": "^2.4.1",
     "rimraf": "^3.0.2",
-    "rollup": "^2.42.4",
+    "rollup": "^2.58.0",
     "rollup-plugin-typescript2": "^0.30.0",
-    "typedoc": "^0.20.28",
-    "typescript": "^4.1.5"
+    "typedoc": "^0.22.5",
+    "typescript": "^4.4.4"
   }
 }
